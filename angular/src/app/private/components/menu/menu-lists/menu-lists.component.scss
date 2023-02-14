@@ -1,0 +1,81 @@
+@use "partials" as *;
+
+.lists__section {
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lists__header {
+  color: $font-color;
+  font-size: $header-size;
+  font-weight: 400;
+  padding: 0 1rem;
+  padding-bottom: 2.4rem;
+}
+
+.lists__container {
+  color: $font-color;
+  margin-bottom: 1.2rem;
+  max-height: 35vh;
+  max-width: 28rem;
+  overflow: auto;
+}
+
+.list {
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.4rem;
+  &:hover {
+    background-color: $main-color-tint;
+  }
+}
+
+.list--active {
+  background-color: $main-color-tint;
+}
+
+.list__icon {
+  height: 20px;
+  padding-right: 2rem;
+}
+
+.list__name {
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  font-size: $list-name;
+}
+
+.list__icon:hover,
+.list__name:hover {
+  cursor: pointer;
+}
+
+// adding new list
+
+.new-list {
+  color: $font-color;
+  letter-spacing: 0.1px;
+  font-weight: 300;
+  height: 6.4rem;
+  padding: 1.2rem 1rem;
+  display: flex;
+  justify-content: stretch;
+}
+
+.add-list__form {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.label-add {
+  height: 100%;
+  cursor: pointer;
+}
+.add-list__h {
+  font-weight: 300;
+  font-size: $list-name;
+  color: $primary-blue;
+}

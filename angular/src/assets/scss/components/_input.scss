@@ -1,0 +1,119 @@
+@use "../partials" as *;
+
+.add__input {
+  @include input--styles;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  font-size: $task-title;
+  width: 100%;
+
+  background-color: $main-color-tint;
+  color: $font-color;
+
+  &:focus,
+  &:active {
+    background-color: $main-color-tint;
+  }
+}
+
+.task-detail__input {
+  @include input--styles;
+
+  border-radius: 3px;
+  background-color: $header-color;
+  color: $font-color;
+  padding: 0.4rem 0.8rem;
+  font-size: $task-detail-input;
+  width: 100%;
+
+  border: 1px solid transparent; //added space for active/focus border
+  &:active,
+  &:focus {
+    border: 1px solid $primary-blue;
+  }
+}
+
+.task-detail__textarea {
+  @extend .task-detail__input;
+
+  resize: none;
+  height: 10rem;
+  padding: 0.8rem 1.2rem;
+}
+
+// form controls
+.form-control {
+  display: block;
+  padding-bottom: 1.6rem;
+}
+
+.form__label {
+  color: $font-color;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.form-control.form-control--last {
+  padding-bottom: 0;
+}
+.form-control.signup {
+  padding-bottom: 1.2rem;
+}
+
+// edit task title input and subtasks
+.task-steps__input {
+  @include input--styles;
+
+  background-color: transparent;
+  color: $font-color;
+  font-size: $task-detail-input;
+  border-bottom: 2px solid transparent;
+  width: 20rem;
+
+  &:focus {
+    border-bottom: 2px solid $primary-blue;
+  }
+}
+
+.task-steps__input--sm {
+  @extend .task-steps__input;
+  font-size: $medium;
+  width: 100%;
+}
+
+.add-task__input-details {
+  @extend .task-steps__input--sm;
+  width: 5.6rem;
+}
+.add-task__input-details--bg {
+  @extend .task-steps__input--sm;
+  width: 9rem;
+}
+// for list header
+.task-steps__input--bg {
+  @extend .task-steps__input;
+  font-size: $header-size;
+  margin-left: calc($left-whitespace + 1.4rem);
+  width: 45vw;
+}
+
+.input-button__div {
+  width: 100%;
+  height: 100%;
+}
+
+// userpanel, task-settings
+.task-setting {
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+.task-setting__label {
+  font-size: $label;
+  color: $font-color;
+  font-weight: 300;
+  padding-bottom: 0.4rem;
+}
+
+mat-slide-toggle {
+  margin-left: 2.4rem;
+}

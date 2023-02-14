@@ -1,0 +1,52 @@
+<section class="lists__section flex">
+  <div>
+    <h1 class="lists__header">Lists</h1>
+    <div class="lists__container">
+      <ng-container *ngFor="let list of lists; let i = index">
+        <div
+          class="list flex--vertical-center button"
+          (click)="onSelectList(i)"
+          routerLink="/todo/list/{{ i }}"
+          routerLinkActive="list--active"
+        >
+          <img [src]="list.iconPath" alt="menu icon" class="list__icon" />
+          <h2 class="heading--secondary list__name">{{ list.name }}</h2>
+        </div>
+      </ng-container>
+    </div>
+    <div class="new-list">
+      <form
+        (ngSubmit)="onAddingList()"
+        class="add-list__form"
+        [formGroup]="addListForm"
+      >
+        <label
+          for="add-list"
+          (click)="onAddList = !onAddList"
+          class="label-add flex--vertical-center"
+          *ngIf="!onAddList"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon--plus-bg"
+            viewBox="0 0 512 512"
+          >
+            <path stroke-width="32" d="M256 112v288M400 256H112" />
+          </svg>
+          <h2 class="add-list__h">Add new list</h2>
+        </label>
+        <input
+          class="add__input"
+          *ngIf="onAddList"
+          id="add-list"
+          formControlName="title"
+          (blur)="hideInput()"
+          #input
+        />
+        <button type="submit" *ngIf="onAddList" class="list__button button">
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

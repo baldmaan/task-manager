@@ -1,0 +1,48 @@
+@use "../partials" as *;
+
+.list__button {
+  border: none;
+  background-color: transparent;
+  margin-left: 2.4rem;
+  font-size: $task-detail-input;
+  font-weight: 400;
+  color: $primary-blue;
+}
+
+.list__button--sm {
+  @extend .list__button;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.form__button {
+  width: 100%;
+  height: 3.6rem;
+  font-size: $task-detail-input;
+  font-weight: 700;
+
+  background-color: $primary-blue;
+  color: $font-color;
+  border: none;
+  border-radius: 9px;
+  margin-top: 2.4rem;
+}
+
+.file-upload__button {
+  font-size: $task-detail-input;
+  color: #ffffff;
+  background-color: $primary-blue;
+
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+}
+
+.edit-personal__button {
+  @extend .file-upload__button;
+
+  padding: 0.6rem 0.8rem;
+}

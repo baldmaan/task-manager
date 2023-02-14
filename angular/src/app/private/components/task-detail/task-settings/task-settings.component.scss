@@ -1,0 +1,20 @@
+@use "partials" as *;
+
+.task-settings {
+  padding: 1.2rem 0;
+}
+
+// task-setting moved to input.scss file, because it is reused in userpanel
+
+// overwrite padding in options inputs
+.task-detail__input {
+  padding-left: 4rem;
+}
+::-webkit-file-upload-button {
+  display: none;
+}
+
+.button-submit__div {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,28 @@
+@use "partials" as *;
+
+.task-steps {
+  width: 100%;
+  min-height: 10vh;
+  border-radius: 3px;
+  padding: 0.8rem;
+
+  background-color: $header-color;
+}
+
+.main-task {
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.main-task__title {
+  font-size: $task-detail-input;
+
+  color: $font-color;
+}
+.change-title__div {
+  padding-left: 1rem;
+}
+
+.icon--checked {
+  margin-right: 0;
+}

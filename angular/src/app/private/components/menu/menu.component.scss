@@ -1,0 +1,11 @@
+@use "partials" as *;
+
+.menu__container {
+  height: $no-header-height;
+  background-color: $main-color;
+
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+
+  max-width: 28rem;
+}

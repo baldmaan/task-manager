@@ -1,0 +1,61 @@
+@use "partials" as *;
+// 17.2
+
+.tasks-view {
+  background-color: $main-color;
+  color: $font-color;
+  max-height: calc($no-header-height - 20rem);
+  overflow-y: auto;
+}
+
+.task__info {
+  flex-direction: column;
+  width: 100%;
+}
+
+.task__div {
+  height: 4.6rem;
+  border-bottom: 1px solid $header-color;
+}
+
+.task__name {
+  font-size: $task-title;
+  padding-bottom: 0.3rem;
+}
+.task__deadline {
+  font-size: $label;
+  padding-right: 0.8rem;
+  display: flex;
+  justify-content: center;
+
+  @include media(">tablet") {
+    &:not(:last-child):after {
+      padding-left: 0.8rem;
+      content: "•";
+    }
+  }
+}
+
+.task__deadline--extra {
+  @extend .task__deadline;
+
+  @include media("<=tablet") {
+    display: none;
+  }
+}
+
+// completed
+.completed__heading {
+  height: 4rem;
+  border-bottom: 1px solid $header-color;
+  padding: 0 2rem;
+
+  h2 {
+    font-size: $task-title;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+  }
+}
+p.completed {
+  color: $completed-color;
+}

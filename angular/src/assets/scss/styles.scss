@@ -1,0 +1,54 @@
+@use "./partials";
+@use "./components";
+@use "./base";
+@use "./breakpoints";
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+// theme
+$md-mcgpalette0: (
+  50: #e7e9ff,
+  100: #c3c8ff,
+  200: #9ba3ff,
+  300: #727efe,
+  400: #5462fe,
+  500: #3646fe,
+  600: #303ffe,
+  700: #2937fe,
+  800: #222ffe,
+  900: #1620fd,
+  A100: #ffffff,
+  A200: #fafaff,
+  A400: #c7c9ff,
+  A700: #adb0ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$my-primary: mat.define-palette($md-mcgpalette0, 500);
+
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-primary,
+    ),
+  )
+);
+
+@include mat.all-component-themes($my-theme);

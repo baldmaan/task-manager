@@ -1,0 +1,14 @@
+@use "partials" as *;
+
+.task-detail__container {
+  height: $no-header-height;
+  background-color: $main-color;
+  padding: 3.2rem $left-whitespace 5rem $left-whitespace;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  max-width: 40rem;
+  overflow-y: auto;
+}

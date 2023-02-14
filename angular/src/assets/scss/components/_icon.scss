@@ -1,0 +1,187 @@
+@use "partials" as *;
+.icon--circle {
+  height: 1.6rem;
+  padding-right: 2.6rem;
+  stroke: $primary-blue;
+  fill: none;
+  stroke-width: 1;
+}
+.icon--arrow {
+  height: 1.6rem;
+  padding-right: 2.6rem;
+  fill: none;
+  stroke: $primary-blue;
+}
+.icon--circle--sm {
+  height: 1.2rem;
+  padding-right: 1.6rem;
+}
+.icon--settings {
+  position: absolute;
+  height: 2rem;
+  top: 0.3rem;
+  left: 0.5rem;
+}
+.task-detail__icon {
+  height: 3.6rem;
+  padding: 0;
+}
+
+.icon--star {
+  height: 2rem;
+  fill: $primary-blue;
+}
+
+.icon--star-outline {
+  height: 2rem;
+  fill: none;
+  stroke: $primary-blue;
+  stroke-linejoin: round;
+  stroke-width: 32;
+}
+
+.icon--active {
+  fill: none;
+
+  height: 1.6rem;
+  width: 1.6rem;
+  stroke: $primary-blue;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.icon--active-sm {
+  @extend .icon--active;
+
+  height: 1.2rem;
+  width: 1.6rem;
+}
+.icon--checked {
+  height: 1.8rem;
+  width: 1.6rem;
+  margin-right: 2.6rem;
+  fill: $primary-blue;
+}
+.icon--checked-sm {
+  fill: $primary-blue;
+
+  height: 1.2rem;
+  width: 1.6rem;
+}
+.add-step__icon {
+  stroke: $primary-blue;
+}
+
+// task steps
+.icon--plus-bg {
+  height: 2rem;
+  stroke: $primary-blue;
+
+  margin-right: 2rem;
+}
+.icon--plus {
+  height: 2rem;
+  width: 1.6rem;
+  stroke: $primary-blue;
+  margin-right: 1.2rem;
+}
+
+.add-task__icon {
+  @extend .icon--plus;
+
+  margin-right: 2.5rem;
+}
+
+// list-view
+.icon--dots {
+  height: 2.4rem;
+  margin-top: 0.5rem;
+  fill: $font-color;
+}
+
+.icon--sort {
+  height: 2rem;
+  width: 2rem;
+  padding-right: 5px;
+  fill: $primary-blue;
+}
+
+// navbar
+.header__icon {
+  height: 3rem;
+  fill: none;
+  stroke: $primary-blue;
+  stroke-width: 30;
+}
+
+.icon--back {
+  height: 2.4rem;
+  fill: $primary-blue;
+}
+
+.icon--task-info {
+  height: 1.1rem;
+  width: 0.8rem;
+  stroke: $font-color;
+  margin-right: 0.4rem;
+}
+
+.icon--task-info.bg {
+  height: 1.4rem;
+  width: 1.4rem;
+  stroke: $font-color;
+  margin-right: 0.4rem;
+}
+.icon--search {
+  position: absolute;
+  // for positioning serach icon vertically centered
+  top: 50%;
+  transform: translateY(-50%);
+  right: 8px;
+
+  height: 2rem;
+  width: 2rem;
+}
+
+// settings
+
+.icon--userpanel {
+  height: 2.4rem;
+  stroke: $font-color;
+  position: absolute;
+  right: 8px;
+  top: 0px;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.icon--eye {
+  stroke: $font-color;
+  height: 2rem;
+  position: absolute;
+  // for positioning serach icon vertically centered
+  top: 50%;
+  transform: translateY(-50%);
+  right: 8px;
+}
+
+.icon--eye.eye-off {
+  fill: $font-color;
+}
+
+.icon--list {
+  height: 4rem;
+  padding: 0.6rem;
+
+  -webkit-box-shadow: 0px 0px 1px 0px rgba($font-color, 0.2);
+  -moz-box-shadow: 0px 0px 1px 0px rgba($font-color, 0.2);
+  box-shadow: 0px 0px 1px 0px rgba($font-color, 0.2);
+
+  &:hover {
+    transform: scale(1.15);
+    background-color: $main-color;
+  }
+}

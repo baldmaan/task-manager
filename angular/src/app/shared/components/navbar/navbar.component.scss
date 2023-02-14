@@ -1,0 +1,19 @@
+@use "partials" as *;
+.header {
+  height: $header-height;
+  width: 100%;
+  background-color: $header-color;
+}
+
+.header__nav {
+  height: 100%;
+  justify-content: space-between;
+
+  padding: 0 $left-whitespace;
+}
+
+.logo {
+  color: $header-font-color;
+  font-family: $logo-font;
+  font-size: $header-size;
+}

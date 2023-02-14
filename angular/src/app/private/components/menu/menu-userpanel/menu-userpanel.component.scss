@@ -1,0 +1,54 @@
+@use "partials" as *;
+
+.menu-userpanel__container {
+  width: 100%;
+  flex-direction: column;
+  padding: 2.4rem 1rem;
+  max-width: 28rem;
+}
+
+.user__informations {
+  flex-direction: row;
+  width: 100%;
+
+  padding-bottom: 1.6rem;
+  overflow: auto;
+}
+
+.user-data {
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+
+  font-family: $font;
+  font-size: $task-detail-input;
+  font-weight: 300;
+
+  padding-left: 1.2rem;
+}
+
+.user-data__greeting {
+  font-weight: 600;
+}
+
+.profile__img {
+  border-radius: 50%;
+  height: 6.4rem;
+}
+
+.input__div {
+  position: relative;
+}
+
+.input {
+  @include input--styles;
+
+  height: 3.2rem;
+  border-radius: 9px;
+  padding: 0.8rem 1.2rem;
+  width: 100%;
+  background: #f2f2f2;
+  &:focus {
+    background: rgb(255, 255, 255);
+  }
+}

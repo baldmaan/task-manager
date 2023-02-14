@@ -1,0 +1,11 @@
+@mixin input--styles {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+
+  border: none;
+  outline: none;
+
+  font-family: inherit;
+}

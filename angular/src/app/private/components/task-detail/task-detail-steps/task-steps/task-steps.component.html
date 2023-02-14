@@ -1,0 +1,70 @@
+<section class="task-steps">
+  <div>
+    <div class="add-step__div">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon--plus"
+        viewBox="0 0 512 512"
+      >
+        <path stroke-width="32" d="M256 112v288M400 256H112" />
+      </svg>
+
+      <form
+        [formGroup]="addStep"
+        (ngSubmit)="onAddStep(); titleInput.blur()"
+        class="form"
+      >
+        <input
+          formControlName="title"
+          class="task-steps__input--sm"
+          [readonly]="!addStepInput"
+          (click)="setVisible()"
+          placeholder="Add step"
+          #titleInput
+        />
+
+        <!-- <button type="submit" *ngIf="addStepInput" class="list__button--sm">
+          Add
+        </button> -->
+      </form>
+    </div>
+  </div>
+  <div class="steps">
+    <div
+      class="step flex--vertical-center"
+      *ngFor="let step of steps; let i = index"
+    >
+      <svg
+        class="icon--active-sm button"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+        *ngIf="!step.isCompleted"
+        (click)="steps[i].isCompleted = !steps[i].isCompleted"
+      >
+        <circle cx="12" cy="12" r="10" />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon--checked-sm button"
+        viewBox="0 0 512 512"
+        *ngIf="step.isCompleted"
+        (click)="steps[i].isCompleted = !steps[i].isCompleted"
+      >
+        <path
+          d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"
+        />
+      </svg>
+      <p class="step__title">{{ step.title }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- <svg
+      class="icon--active-sm"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="12" cy="12" r="10" />
+    </svg> -->

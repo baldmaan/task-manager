@@ -1,0 +1,68 @@
+<main class="task-steps" *ngIf="selectedTask">
+  <div class="flex main-task">
+    <div class="flex--vertical-center">
+      <svg
+        class="icon--active"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+        (click)="onSetComplete()"
+        *ngIf="!isCompleted"
+      >
+        <circle cx="12" cy="12" r="10" />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon--checked"
+        viewBox="0 0 512 512"
+        (click)="onSetComplete()"
+        *ngIf="isCompleted"
+      >
+        <path
+          d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"
+        />
+      </svg>
+
+      <div class="flex--vertical-center change-title__div">
+        <form [formGroup]="editTitle" (ngSubmit)="onEditTitle()">
+          <input
+            formControlName="title"
+            class="task-steps__input"
+            value="{{ selectedTask.title }}"
+            *ngIf="editTask"
+          />
+          <input
+            value="{{ selectedTask.title }}"
+            class="task-steps__input"
+            *ngIf="!editTask"
+            readonly
+            (click)="editTask = true"
+          />
+        </form>
+      </div>
+    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      class="icon--star-outline button"
+      (click)="isImportant = !isImportant"
+      *ngIf="!isImportant"
+    >
+      <path
+        d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+      />
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      class="icon--star button"
+      (click)="isImportant = !isImportant"
+      *ngIf="isImportant"
+    >
+      <path
+        d="M394 480a16 16 0 01-9.39-3L256 383.76 127.39 477a16 16 0 01-24.55-18.08L153 310.35 23 221.2a16 16 0 019-29.2h160.38l48.4-148.95a16 16 0 0130.44 0l48.4 149H480a16 16 0 019.05 29.2L359 310.35l50.13 148.53A16 16 0 01394 480z"
+      />
+    </svg>
+  </div>
+  <app-task-steps></app-task-steps>
+</main>

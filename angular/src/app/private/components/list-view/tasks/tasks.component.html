@@ -1,0 +1,264 @@
+<section class="tasks-view" [ngStyle]="{ 'background-color': color }">
+  <div class="active-tasks">
+    <ng-container *ngFor="let task of tasks; let i = index">
+      <div class="task__div container flex--vertical-center button">
+        <div (click)="setCompleted(i)">
+          <svg
+            class="icon--circle"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            *ngIf="!task.isCompleted"
+          >
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon--checked"
+            viewBox="0 0 512 512"
+            *ngIf="task.isCompleted"
+          >
+            <path
+              d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"
+            />
+          </svg>
+        </div>
+
+        <div class="flex task__info" (click)="checkDetails(i)">
+          <p class="task__name" [ngClass]="{ completed: task.isCompleted }">
+            {{ task.title }}
+          </p>
+          <div class="flex--vertical-center">
+            <div
+              class="task__deadline"
+              *ngIf="task.steps && task.steps.length > 0"
+            >
+              {{ getCompletedSteps(i) }} of {{ task.steps.length }}
+            </div>
+            <div class="task__deadline" *ngIf="task.deadline">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon--task-info"
+                viewBox="0 0 512 512"
+              >
+                <rect
+                  fill="none"
+                  stroke-linejoin="round"
+                  stroke-width="40"
+                  x="48"
+                  y="80"
+                  width="416"
+                  height="384"
+                  rx="48"
+                />
+                <path
+                  fill="none"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                  stroke-linecap="round"
+                  d="M128 48v32M384 48v32M464 160H48"
+                />
+              </svg>
+
+              <p [ngClass]="{ completed: task.isCompleted }">
+                {{ task.deadline | date: "fullDate" }}
+              </p>
+            </div>
+            <div class="task__deadline--extra" *ngIf="task.repeat">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon--task-info"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M400 148l-21.12-24.57A191.43 191.43 0 00240 64C134 64 48 150 48 256s86 192 192 192a192.09 192.09 0 00181.07-128"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <path
+                  d="M464 97.42V208a16 16 0 01-16 16H337.42c-14.26 0-21.4-17.23-11.32-27.31L436.69 86.1C446.77 76 464 83.16 464 97.42z"
+                />
+              </svg>
+              <p [ngClass]="{ completed: task.isCompleted }">
+                {{ task.repeat }}
+              </p>
+            </div>
+            <div class="task__deadline--extra" *ngIf="task.reminder">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon--task-info"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M427.68 351.43C402 320 383.87 304 383.87 217.35 383.87 138 343.35 109.73 310 96c-4.43-1.82-8.6-6-9.95-10.55C294.2 65.54 277.8 48 256 48s-38.21 17.55-44 37.47c-1.35 4.6-5.52 8.71-9.95 10.53-33.39 13.75-73.87 41.92-73.87 121.35C128.13 304 110 320 84.32 351.43 73.68 364.45 83 384 101.61 384h308.88c18.51 0 27.77-19.61 17.19-32.57zM320 384v16a64 64 0 01-128 0v-16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+              <p [ngClass]="{ completed: task.isCompleted }">
+                {{ task.reminder }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div
+    class="completed__heading flex--vertical-center"
+    (click)="showCompleted = !showCompleted"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="add-task__icon"
+      viewBox="0 0 512 512"
+      *ngIf="showCompleted"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="48"
+        d="M112 184l144 144 144-144"
+      />
+    </svg>
+
+    <svg
+      *ngIf="!showCompleted"
+      class="add-task__icon"
+      style="enable-background: new 0 0 512 512"
+      version="1.1"
+      viewBox="0 0 512 512"
+      width="512px"
+      xml:space="preserve"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <polygon
+        points="160,128.4 192.3,96 352,256 352,256 352,256 192.3,416 160,383.6 287.3,256 "
+      />
+    </svg>
+
+    <h2>Completed</h2>
+  </div>
+  <div class="active-tasks" *ngIf="showCompleted">
+    <ng-container *ngFor="let task of tasks; let i = index">
+      <div class="task__div container flex--vertical-center button">
+        <div (click)="setCompleted(i)">
+          <svg
+            class="icon--circle"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            *ngIf="!task.isCompleted"
+          >
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon--checked"
+            viewBox="0 0 512 512"
+            *ngIf="task.isCompleted"
+          >
+            <path
+              d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"
+            />
+          </svg>
+        </div>
+
+        <div class="flex task__info" (click)="checkDetails(i)">
+          <p class="task__name" [ngClass]="{ completed: task.isCompleted }">
+            {{ task.title }}
+          </p>
+          <div class="flex--vertical-center">
+            <div
+              class="task__deadline"
+              *ngIf="task.steps && task.steps.length > 0"
+            >
+              {{ getCompletedSteps(i) }} of {{ task.steps.length }}
+            </div>
+            <div class="task__deadline" *ngIf="task.deadline">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon--task-info"
+                viewBox="0 0 512 512"
+              >
+                <rect
+                  fill="none"
+                  stroke-linejoin="round"
+                  stroke-width="40"
+                  x="48"
+                  y="80"
+                  width="416"
+                  height="384"
+                  rx="48"
+                />
+                <path
+                  fill="none"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                  stroke-linecap="round"
+                  d="M128 48v32M384 48v32M464 160H48"
+                />
+              </svg>
+
+              <p [ngClass]="{ completed: task.isCompleted }">
+                {{ task.deadline | date: "fullDate" }}
+              </p>
+            </div>
+            <div class="task__deadline--extra" *ngIf="task.repeat">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon--task-info"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M400 148l-21.12-24.57A191.43 191.43 0 00240 64C134 64 48 150 48 256s86 192 192 192a192.09 192.09 0 00181.07-128"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <path
+                  d="M464 97.42V208a16 16 0 01-16 16H337.42c-14.26 0-21.4-17.23-11.32-27.31L436.69 86.1C446.77 76 464 83.16 464 97.42z"
+                />
+              </svg>
+              <p [ngClass]="{ completed: task.isCompleted }">
+                {{ task.repeat }}
+              </p>
+            </div>
+            <div class="task__deadline--extra" *ngIf="task.reminder">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon--task-info"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M427.68 351.43C402 320 383.87 304 383.87 217.35 383.87 138 343.35 109.73 310 96c-4.43-1.82-8.6-6-9.95-10.55C294.2 65.54 277.8 48 256 48s-38.21 17.55-44 37.47c-1.35 4.6-5.52 8.71-9.95 10.53-33.39 13.75-73.87 41.92-73.87 121.35C128.13 304 110 320 84.32 351.43 73.68 364.45 83 384 101.61 384h308.88c18.51 0 27.77-19.61 17.19-32.57zM320 384v16a64 64 0 01-128 0v-16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
+              <p [ngClass]="{ completed: task.isCompleted }">
+                {{ task.reminder }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

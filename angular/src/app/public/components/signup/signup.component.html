@@ -1,0 +1,32 @@
+<main class="login__background flex--vertical-center">
+  <section class="login__container">
+    <div class="form__header flex">
+      <h1>Create new account</h1>
+    </div>
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+      <div class="form-control signup">
+        <label class="form__label">Email:</label>
+        <input class="task-detail__input" formControlName="email" />
+      </div>
+      <div class="form-control signup">
+        <label class="form__label">Username:</label>
+        <input class="task-detail__input" formControlName="username" />
+      </div>
+      <div class="form-control form-control--last">
+        <label class="form__label">Password:</label>
+        <input
+          class="task-detail__input"
+          type="password"
+          formControlName="password"
+        />
+      </div>
+      <div class="form-control">
+        <button class="form__button button">Sign up</button>
+      </div>
+    </form>
+
+    <a class="login-redirect__link" routerLink="/login"
+      >Already have an account?</a
+    >
+  </section>
+</main>

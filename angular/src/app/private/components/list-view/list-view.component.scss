@@ -1,0 +1,7 @@
+@use "partials" as *;
+
+.list-view__container {
+  height: $no-header-height;
+  background-color: $main-color;
+  padding-bottom: 3.2rem;
+}

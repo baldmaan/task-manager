@@ -1,0 +1,52 @@
+@use "./partials" as *;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: $font;
+}
+
+html,
+body {
+  height: 100%;
+}
+.flex {
+  display: flex;
+}
+
+.container {
+  padding: 0 $left-whitespace;
+}
+
+.flex--vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.list__border {
+  border-top: 1px solid $header-color;
+  border-bottom: 1px solid $header-color;
+}
+
+.div--relative {
+  position: relative;
+}
+
+.link {
+  text-decoration: none;
+  // added for remove extra link height
+  line-height: 0;
+}
+
+.mat-drawer-content {
+  overflow: hidden !important;
+}

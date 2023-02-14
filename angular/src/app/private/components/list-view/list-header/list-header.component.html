@@ -1,0 +1,136 @@
+<section
+  class="list-header__container flex--vertical-center"
+  [ngStyle]="{ 'background-color': color }"
+>
+  <div class="flex--vertical-center">
+    <form [formGroup]="renameForm" (ngSubmit)="onEditTitle()">
+      <input
+        formControlName="title"
+        class="task-steps__input--bg"
+        *ngIf="editTitle"
+        (blur)="editTitle = false"
+        #input
+      />
+      <span *ngIf="!editTitle" class="list-header__header">{{
+        listTitle
+      }}</span>
+
+      <!-- set media queries for input, now is optimal for mobile -->
+    </form>
+
+    <div class="dropdown" (clickOutside)="openedOptions = false">
+      <div class="dropdown__select button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon--dots"
+          viewBox="0 0 512 512"
+          (click)="openedOptions = !openedOptions"
+        >
+          <circle cx="256" cy="256" r="48" />
+          <circle cx="416" cy="256" r="48" />
+          <circle cx="96" cy="256" r="48" />
+        </svg>
+      </div>
+      <div
+        class="dropdown-menu--right dropdown-menu--list-view"
+        [ngClass]="{ 'dropdown-visible': openedOptions }"
+      >
+        <div
+          class="dropdown-menu__item"
+          (click)="
+            editTitle = true;
+            openedOptions = false;
+            this.renameForm.controls['title'].setValue(this.listTitle)
+          "
+        >
+          <img
+            src="assets/svg/edit.svg"
+            alt="Rename list icon"
+            class="option__icon"
+          />
+          <p class="option__p">Rename list</p>
+        </div>
+        <div
+          class="dropdown-menu__item div--relative"
+          (click)="showIconPicker = !showIconPicker"
+          (clickOutside)="showIconPicker = false"
+        >
+          <img
+            [src]="selectedIconPath"
+            alt="Default icon"
+            class="option__icon"
+          />
+          <p class="option__p">Set icon</p>
+          <div class="set-icon__picker" *ngIf="showIconPicker">
+            <ng-container *ngFor="let icon of icons">
+              <img
+                src="assets/svg/icon-picker/{{ icon }}.svg"
+                alt="{{ icon }} for lists"
+                class="icon--list"
+                (click)="changeIcon(icon)"
+              />
+            </ng-container>
+          </div>
+        </div>
+        <div
+          class="dropdown-menu__item div--relative"
+          (click)="showColorPicker = !showColorPicker"
+          (clickOutside)="showColorPicker = false"
+        >
+          <img
+            src="assets/svg/picture.svg"
+            alt="Change theme icon"
+            class="option__icon"
+          />
+          <p class="option__p">Change theme</p>
+
+          <div class="change-theme__picker" *ngIf="showColorPicker">
+            <github-picker [control]="colorPicker"></github-picker>
+          </div>
+        </div>
+        <div class="dropdown-menu__item" (click)="onDeleteList()">
+          <img
+            src="assets/svg/delete.svg"
+            alt="Delete list icon"
+            class="option__icon"
+          />
+          <p class="option__p">Delete list</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex--vertical-center sort__container button">
+    <div class="dropdown">
+      <div
+        class="dropdown__select button flex--vertical-center"
+        (click)="openedSort = !openedSort"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon--sort"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M296 464a23.88 23.88 0 01-7.55-1.23L208.3 436.1a23.92 23.92 0 01-16.3-22.78V294.11a.44.44 0 00-.09-.13L23.26 97.54A30 30 0 0146.05 48H466a30 30 0 0122.79 49.54L320.09 294a.77.77 0 00-.09.13V440a23.93 23.93 0 01-24 24z"
+          />
+        </svg>
+        <p class="sort__p">Sort</p>
+      </div>
+      <div
+        class="dropdown-menu--left dropdown-menu--list-view"
+        [ngClass]="{ 'dropdown-visible': openedSort }"
+      >
+        <div class="dropdown-menu__item" (click)="openedSort = false">
+          <p class="option__p">By importance</p>
+        </div>
+        <div class="dropdown-menu__item" (click)="openedSort = false">
+          <p class="option__p">Alphabetically</p>
+        </div>
+        <div class="dropdown-menu__item" (click)="openedSort = false">
+          <p class="option__p">Creation date</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,190 @@
+<section class="task-settings">
+  <form [formGroup]="taskDetails" (ngSubmit)="onSubmit()">
+    <div class="task-setting flex">
+      <label class="task-setting__label">Set deadline</label>
+      <div class="div--relative" (click)="calendar.open()">
+        <input
+          class="task-detail__input datepicker-input"
+          matInput
+          [matDatepicker]="calendar"
+          formControlName="deadline"
+          readonly
+        />
+        <mat-datepicker #calendar></mat-datepicker>
+        <img
+          src="assets\svg\calendar.svg"
+          alt="Calendar icon"
+          class="icon--settings button"
+        />
+      </div>
+    </div>
+    <div class="task-setting flex">
+      <label class="task-setting__label">Add reminder</label>
+      <div class="div--relative">
+        <div class="div--relative" (clickOutside)="isReminderOpen = false">
+          <input
+            class="task-detail__input"
+            (focus)="isReminderOpen = true"
+            formControlName="reminder"
+            readonly
+          />
+          <img
+            src="assets\svg\alert.svg"
+            alt="Alarm icon"
+            class="icon--settings button"
+          />
+        </div>
+        <div
+          class="dropdown-menu"
+          [ngClass]="{ 'dropdown-visible': isReminderOpen }"
+        >
+          <div
+            class="dropdown-menu__item"
+            (click)="isReminderOpen = false; setRemindDate(0)"
+          >
+            <img
+              src="assets/svg/time-3.svg"
+              alt="Rename list icon"
+              class="option__icon"
+            />
+            <p class="option__p">3 hours later</p>
+          </div>
+          <div
+            class="dropdown-menu__item"
+            (click)="isReminderOpen = false; setRemindDate(1)"
+          >
+            <img
+              src="assets/svg/tomorrow.svg"
+              alt="Default icon"
+              class="option__icon"
+            />
+            <p class="option__p">Tomorrow</p>
+          </div>
+          <div
+            class="dropdown-menu__item"
+            (click)="isReminderOpen = false; setRemindDate(2)"
+          >
+            <img
+              src="assets/svg/next-week.svg"
+              alt="Change theme icon"
+              class="option__icon"
+            />
+            <p class="option__p">Next week</p>
+          </div>
+          <div class="dropdown-menu__item" (click)="isReminderOpen = false">
+            <img
+              src="assets/svg/trash.svg"
+              alt="Delete list icon"
+              class="option__icon"
+            />
+            <p class="option__p">Pick a date</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="task-setting flex">
+      <label class="task-setting__label">Repeat task</label>
+      <div class="div--relative">
+        <div class="div--relative" (clickOutside)="isRepeatOpen = false">
+          <input
+            class="task-detail__input"
+            (focus)="isRepeatOpen = true"
+            formControlName="repeat"
+            readonly
+          />
+          <img
+            src="assets\svg\repeat.svg"
+            alt="Repeat icon"
+            class="icon--settings button"
+          />
+        </div>
+        <div
+          class="dropdown-menu"
+          [ngClass]="{ 'dropdown-visible': isRepeatOpen }"
+        >
+          <div
+            class="dropdown-menu__item"
+            (click)="isRepeatOpen = false; setRepeat('Daily')"
+          >
+            <img
+              src="assets/svg/daily.svg"
+              alt="Rename list icon"
+              class="option__icon"
+            />
+            <p class="option__p">Daily</p>
+          </div>
+          <div
+            class="dropdown-menu__item"
+            (click)="isRepeatOpen = false; setRepeat('Weekdays')"
+          >
+            <img
+              src="assets/svg/weekdays.svg"
+              alt="Default icon"
+              class="option__icon"
+            />
+            <p class="option__p">Weekdays</p>
+          </div>
+          <div
+            class="dropdown-menu__item"
+            (click)="isRepeatOpen = false; setRepeat('Weekly')"
+          >
+            <img
+              src="assets/svg/weekly.svg"
+              alt="Change theme icon"
+              class="option__icon"
+            />
+            <p class="option__p">Weekly</p>
+          </div>
+          <div
+            class="dropdown-menu__item"
+            (click)="isRepeatOpen = false; setRepeat('Monthly')"
+          >
+            <img
+              src="assets/svg/monthly.svg"
+              alt="Delete list icon"
+              class="option__icon"
+            />
+            <p class="option__p">Monthly</p>
+          </div>
+          <div class="dropdown-menu__item" (click)="isRepeatOpen = false">
+            <img
+              src="assets/svg/trash.svg"
+              alt="Delete list icon"
+              class="option__icon"
+            />
+            <p class="option__p">Custom</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="task-setting flex">
+      <label class="task-setting__label">Add files</label>
+      <div class="div--relative">
+        <input
+          class="task-detail__input"
+          formControlName="file"
+          readonly
+          type="file"
+        />
+
+        <img
+          src="assets\svg\add_file.svg"
+          alt="Add file icon"
+          class="icon--settings button"
+        />
+      </div>
+    </div>
+    <div class="task-setting flex">
+      <label class="task-setting__label">Description</label>
+
+      <textarea
+        class="task-detail__textarea"
+        placeholder="Add description"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div class="button-submit__div">
+      <button class="list__button button" type="submit">Save</button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,51 @@
+@use "partials" as *;
+
+.login__background {
+  background-color: $primary-blue;
+  height: 100vh;
+  justify-content: center;
+}
+.login__container {
+  height: 36rem;
+  background-color: $main-color;
+  width: 32rem;
+  padding: 2.4rem 3.2rem;
+
+  border-radius: 9px;
+}
+
+.form__header {
+  color: $font-color;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 1.6rem;
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+.new-account__container {
+  margin-top: 1rem;
+  border-top: 1px solid $main-color-tint;
+  display: flex;
+  justify-content: center;
+
+  .form__button {
+    background-color: $accent-green;
+    font-weight: 600;
+    font-size: 1.2rem;
+    width: 80%;
+  }
+}
+
+// SIGNUP COMPONENT
+.login-redirect__link {
+  color: $primary-blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
