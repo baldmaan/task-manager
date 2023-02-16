@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ListItem, Step } from 'src/app/private/models/list-item.model';
 import { List } from 'src/app/private/models/list.model';

@@ -19,14 +19,16 @@
 .task-detail__input {
   @include input--styles;
 
-  border-radius: 3px;
-  background-color: $header-color;
+  border-radius: 9px;
+  background-color: white;
   color: $font-color;
-  padding: 0.4rem 0.8rem;
+  padding: 0.6rem 1.4rem;
   font-size: $task-detail-input;
   width: 100%;
 
-  border: 1px solid transparent; //added space for active/focus border
+  border: 1px solid #eee; //added space for active/focus border
+
+  transition: 0.2s all;
   &:active,
   &:focus {
     border: 1px solid $primary-blue;
@@ -49,8 +51,9 @@
 
 .form__label {
   color: $font-color;
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 2;
+  letter-spacing: -0.3px;
 }
 
 .form-control.form-control--last {

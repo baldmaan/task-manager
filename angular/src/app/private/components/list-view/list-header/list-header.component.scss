@@ -13,6 +13,14 @@
   font-size: $header-size;
   font-weight: 500;
   margin-left: calc($left-whitespace + 1.4rem);
+  display: inline-block;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  @media (max-width: 500px) {
+    margin-left: 2rem;
+  }
 }
 
 .sort__container {

@@ -24,7 +24,7 @@ export class MenuListsComponent implements OnInit, OnDestroy {
       element.nativeElement.focus();
     }
   }
-  lists;
+  lists: List[];
   subscription: Subscription;
 
   onAddList: boolean = false;

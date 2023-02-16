@@ -52,3 +52,7 @@ $my-theme: mat.define-light-theme(
 );
 
 @include mat.all-component-themes($my-theme);
+
+.user-data__mail {
+  font-size: 1.4rem;
+}

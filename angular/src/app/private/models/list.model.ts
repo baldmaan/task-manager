@@ -8,7 +8,7 @@ export class List {
 
   constructor(name: string, icon?: string) {
     this.name = name;
-    this.tasks = [new ListItem('siema')];
+    this.tasks = [new ListItem('take a bath')];
     if (icon) {
       this.iconPath = icon;
     } else {

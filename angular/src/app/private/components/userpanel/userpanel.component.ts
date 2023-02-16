@@ -7,8 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./userpanel.component.scss'],
 })
 export class UserpanelComponent implements OnInit {
-  filePath =
-    'https://cdn.kobieceinspiracje.pl/media/thumbnail/09/54/0954d59d6ec4fb4d199545e4b645b8a3.webp';
+  filePath = './assets/images/2.jpg';
   myForm: FormGroup;
 
   isDarkTheme = false;
